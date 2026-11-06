@@ -1,11 +1,33 @@
-<script setup lang="ts"></script>
+
+<script setup lang="ts">
+import { useRoute } from 'vue-router'
+import AppNavbar from './components/layout/AppNavbar.vue'
+
+const route = useRoute()
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="app">
+    <AppNavbar v-if="route.name !== 'find-my-major'" />
+
+    <RouterView />
+  </div>
 </template>
 
-<style scoped></style>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+button,
+input {
+  font: inherit;
+}
+</style>
